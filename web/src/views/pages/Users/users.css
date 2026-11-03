@@ -1,0 +1,25 @@
+/* Extra styles for the Users and New admin pages.
+   Colors and base styles come from requests.css (same .w3r scope). */
+
+.w3r-badge--active { color: var(--w3r-published); }
+.w3r-badge--blocked { color: var(--w3r-rejected); }
+.w3r-badge--overdue { color: var(--w3r-pending); }
+.w3r-badge--current { color: var(--w3r-muted); }
+
+.w3r-form { display: grid; gap: 4px; }
+.w3r-form .w3r-field { margin-bottom: 4px; }
+.w3r-form input.w3r-input { min-width: 0; width: 100%; box-sizing: border-box; }
+.w3r-form input.w3r-input[aria-invalid="true"] { border-color: var(--w3r-rejected); }
+.w3r-error { margin: 0 0 10px; font-size: 0.875rem; color: var(--w3r-rejected); }
+.w3r-banner { border: 1px solid var(--w3r-pending); border-radius: 8px; padding: 10px 14px; margin: 0 0 16px; font-size: 0.9rem; }
+
+.w3r-pwrow { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+
+.w3r-checks { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 4px; font-size: 0.875rem; color: var(--w3r-muted); }
+.w3r-check--ok { color: var(--w3r-published); }
+.w3r-check span[aria-hidden] { display: inline-block; width: 1.2em; }
+
+.w3r-minitable { width: 100%; border-collapse: collapse; }
+.w3r-minitable th { text-align: left; font-size: 0.85rem; font-weight: 600; color: var(--w3r-muted); padding: 8px 8px 8px 0; border-bottom: 1px solid var(--w3r-border); }
+.w3r-minitable td { padding: 10px 8px 10px 0; border-bottom: 1px solid var(--w3r-border); overflow-wrap: anywhere; }
+.w3r-minitable tr:last-child td { border-bottom: none; }

@@ -1,0 +1,116 @@
+/* Dashboard styles (W3).
+   Every color reads W1's theme variable first and falls back to a default,
+   so W1's tokens and dark mode apply automatically once they exist.
+   Rename the --color-* names below to match W1's token names. */
+
+.w3-dashboard {
+  --w3-surface: var(--color-surface, #ffffff);
+  --w3-text: var(--color-text, #20250f);
+  --w3-muted: var(--color-text-muted, #5f6652);
+  --w3-border: var(--color-border, #dde0d2);
+  --w3-accent: var(--color-primary, #5a6b1f);
+  --w3-accent-2: var(--color-secondary, #2f7f86);
+  --w3-published: #5a6b1f;
+  --w3-draft: #c48a1a;
+  --w3-suspended: #b4443a;
+  color: var(--w3-text);
+}
+
+:root[data-theme="dark"] .w3-dashboard {
+  --w3-surface: var(--color-surface, #1d2117);
+  --w3-text: var(--color-text, #eef0e4);
+  --w3-muted: var(--color-text-muted, #a7ae98);
+  --w3-border: var(--color-border, #394030);
+  --w3-accent: var(--color-primary, #a9c24a);
+  --w3-accent-2: var(--color-secondary, #5fb7bf);
+  --w3-published: #a9c24a;
+  --w3-draft: #e0a93a;
+  --w3-suspended: #e0766b;
+}
+
+.w3-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.w3-header h1 { margin: 0 0 4px; font-size: 1.6rem; }
+
+.w3-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.w3-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.w3-chartcard--wide { grid-column: 1 / -1; }
+
+.w3-card {
+  background: var(--w3-surface);
+  border: 1px solid var(--w3-border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 0;
+}
+.w3-card__label { margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--w3-muted); }
+.w3-card__value { margin: 8px 0 4px; font-size: 2.2rem; font-weight: 700; line-height: 1.1; }
+.w3-card__value--text { font-size: 1.5rem; line-height: 1.25; }
+.w3-card__value a { color: var(--w3-accent); text-decoration: none; }
+.w3-card__value a:hover { text-decoration: underline; }
+.w3-card__hint { margin: 4px 0 0; font-size: 0.875rem; color: var(--w3-muted); }
+
+.w3-chart { height: 260px; margin-top: 12px; }
+.w3-chartcard--wide .w3-chart { height: 300px; }
+.w3-chart__empty {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--w3-muted);
+  border: 1px dashed var(--w3-border);
+  border-radius: 8px;
+}
+
+.w3-state {
+  border: 1px dashed var(--w3-border);
+  border-radius: 10px;
+  padding: 40px 20px;
+  text-align: center;
+}
+.w3-state h2 { margin: 0 0 6px; font-size: 1.15rem; }
+.w3-state p { margin: 0 0 16px; color: var(--w3-muted); }
+
+.w3-btn {
+  font: inherit;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--w3-border);
+  background: var(--w3-surface);
+  color: var(--w3-text);
+  cursor: pointer;
+}
+.w3-btn:hover:not(:disabled) { border-color: var(--w3-accent); }
+.w3-btn:focus-visible,
+.w3-card__value a:focus-visible { outline: 2px solid var(--w3-accent); outline-offset: 2px; }
+.w3-btn:disabled { opacity: 0.6; cursor: default; }
+
+.w3-skel {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--w3-border) 25%, transparent 50%, var(--w3-border) 75%);
+  background-size: 200% 100%;
+  animation: w3-shimmer 1.4s linear infinite;
+  opacity: 0.6;
+}
+@keyframes w3-shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .w3-skel { animation: none; } }
+
+@media (max-width: 900px) {
+  .w3-stats { grid-template-columns: 1fr; }
+  .w3-charts { grid-template-columns: 1fr; }
+}

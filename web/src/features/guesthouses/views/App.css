@@ -1,0 +1,530 @@
+.app {
+  --primary: #949f4d;
+  --primary-dark: #65732f;
+  --primary-tint: #f1f3e9;
+  --background: #f7f7f5;
+  --surface: #ffffff;
+  --text: #253523;
+  --text-secondary: #75816c;
+  --border: #e9ece6;
+  --success: #3e8e41;
+  --warning: #a77b18;
+  --danger: #c0392b;
+
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  color-scheme: light;
+}
+
+.app.dark {
+  --primary: #78909c;
+  --primary-dark: #a9c2cc;
+  --primary-tint: #303a40;
+  --background: #17191b;
+  --surface: #232629;
+  --text: #eff2f3;
+  --text-secondary: #a9b4b9;
+  --border: #353a3f;
+  --success: #5db36a;
+  --warning: #e5b82e;
+  --danger: #e0665a;
+
+  color-scheme: dark;
+}
+
+.app,
+.app * {
+  box-sizing: border-box;
+}
+
+.app button,
+.app input,
+.app select,
+.app textarea {
+  font-family: inherit;
+}
+
+.app button {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.app button:hover {
+  border-color: var(--primary-dark);
+}
+
+.app button:disabled,
+.app input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.app :is(button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.app .olive-button {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.app.has-sidebar {
+  padding-left: 220px;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  padding: 26px 20px;
+  background: #949f4d;
+  color: #ffffff;
+}
+
+.dark .sidebar {
+  background: #100d0f;
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 36px;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.sidebar-brand > span {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 9px;
+}
+
+.sidebar nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: left;
+}
+
+.sidebar nav button.active {
+  background: rgb(255 255 255 / 14%);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.sidebar-bottom > button {
+  border-color: rgb(255 255 255 / 30%);
+  background: transparent;
+  color: #ffffff;
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.admin-profile > span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #304524;
+}
+
+.admin-profile strong {
+  font-size: 10px;
+}
+
+.admin-profile small {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+.main-content {
+  max-width: 1500px;
+  margin: auto;
+  padding: 38px 36px;
+}
+
+.page-heading {
+  position: relative;
+  margin-bottom: 24px;
+  padding-right: 170px;
+}
+
+.page-heading .eyebrow {
+  display: none;
+}
+
+.app h1 {
+  margin: 0 0 8px;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.add-guesthouse-button {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  margin: 0;
+}
+
+.demo-notice {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--primary-tint);
+  color: var(--primary-dark);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.list-panel {
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+}
+
+.panel-heading h2 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.panel-heading span {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 0 18px 18px;
+}
+
+.filter-bar label {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 120px;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.filter-bar .search-field {
+  flex: 2;
+  max-width: 340px;
+}
+
+.filter-bar input,
+.filter-bar select {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+}
+
+.advanced-filters {
+  position: relative;
+  align-self: flex-end;
+  min-width: 150px;
+  font-size: 12px;
+}
+
+.advanced-filters summary {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.advanced-filters[open] {
+  order: 3;
+  flex-basis: 100%;
+}
+
+.advanced-filter-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.app table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.app th {
+  padding: 14px 16px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.app td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.guesthouse-name {
+  font-weight: 600;
+}
+
+.property-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.property-cell img,
+.property-placeholder {
+  width: 44px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.property-placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--primary-tint);
+  color: var(--primary);
+  font-size: 26px;
+}
+
+.property-cell small {
+  display: block;
+  margin-top: 5px;
+  color: var(--primary-dark);
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.app input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status.published {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.status.draft {
+  background: var(--primary-tint);
+  color: var(--warning);
+}
+
+.status.suspended {
+  background: var(--primary-tint);
+  color: var(--danger);
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.row-actions .edit-link {
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--primary-dark);
+}
+
+.row-actions select {
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 11px;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.photo-carousel {
+  margin-top: 12px;
+}
+
+.photo-carousel > img {
+  width: 100%;
+  height: 180px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.carousel-controls button {
+  padding: 3px 12px;
+  font-size: 21px;
+}
+
+@media (max-width: 1000px) {
+  .app.has-sidebar {
+    padding-left: 180px;
+  }
+
+  .sidebar {
+    width: 180px;
+    padding: 22px 12px;
+  }
+
+  .main-content {
+    padding: 26px 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .app.has-sidebar {
+    padding-left: 0;
+  }
+
+  .sidebar {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 14px 16px;
+  }
+
+  .sidebar-brand {
+    margin: 0;
+    font-size: 8px;
+  }
+
+  .sidebar-brand > span {
+    font-size: 24px;
+  }
+
+  .sidebar nav {
+    display: flex;
+  }
+
+  .sidebar nav button {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .sidebar-bottom {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  .admin-profile {
+    display: none;
+  }
+
+  .main-content {
+    padding: 24px 14px;
+  }
+
+  .page-heading {
+    padding-right: 0;
+  }
+
+  .add-guesthouse-button {
+    position: static;
+    margin-top: 8px;
+  }
+
+  .filter-bar .search-field {
+    max-width: none;
+  }
+
+  .advanced-filters {
+    align-self: stretch;
+  }
+
+  .advanced-filter-fields {
+    grid-template-columns: 1fr;
+  }
+}
