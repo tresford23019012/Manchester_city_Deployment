@@ -1,0 +1,34 @@
+name: Android test APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/mobile-production]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      EXPO_NO_TELEMETRY: '1'
+      NODE_ENV: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: android-actions/setup-android@v3
+      - run: npm ci --include=dev
+      - run: npm run typecheck
+      - name: Build installable test APK
+        working-directory: android
+        run: chmod +x gradlew && ./gradlew assembleRelease --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LocateBase-Android-Test
+          path: android/app/build/outputs/apk/release/app-release.apk
+          if-no-files-found: error
