@@ -23,7 +23,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '25'
-      - uses: android-actions/setup-android@v3
       - working-directory: mobile
         run: npm ci --include=dev
       - working-directory: mobile
