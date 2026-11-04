@@ -12,6 +12,7 @@ jobs:
     env:
       EXPO_NO_TELEMETRY: '1'
       NODE_ENV: production
+      EXPO_PUBLIC_API_URL: https://manchester-city-backend.onrender.com
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,6 +26,11 @@ jobs:
           java-version: '25'
       - working-directory: mobile
         run: npm ci --include=dev
+      - name: Verify production API and Firebase configuration
+        working-directory: mobile
+        run: |
+          node -e "const fs=require('node:fs');const env=fs.readFileSync('.env.production','utf8');for(const key of ['EXPO_PUBLIC_FIREBASE_API_KEY','EXPO_PUBLIC_FIREBASE_PROJECT_ID','EXPO_PUBLIC_FIREBASE_APP_ID'])if(!new RegExp('^'+key+'=.+','m').test(env))throw Error('Missing '+key+' in .env.production');"
+          node -e "if(!process.env.EXPO_PUBLIC_API_URL?.startsWith('https://manchester-city-backend.onrender.com'))process.exit(1)"
       - working-directory: mobile
         run: npm run typecheck
       - name: Build installable test APK
