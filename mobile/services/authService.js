@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 
 import { auth } from "../config/firebase";
-import { syncUserProfile } from './userService';
+import { syncUserProfile, setRegistrationRole } from './userService';
 
 // Register a new user
 export async function registerUser({
@@ -15,7 +15,9 @@ export async function registerUser({
   lastName,
   email,
   password,
+  role = 'customer',
 }) {
+  setRegistrationRole(role);
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -30,10 +32,12 @@ export async function registerUser({
       displayName: fullName,
     });
 
-    await syncUserProfile(userCredential.user);
+    await syncUserProfile(userCredential.user, role);
     return userCredential.user;
   } catch (error) {
     throw error;
+  } finally {
+    setRegistrationRole('customer');
   }
 }
 
