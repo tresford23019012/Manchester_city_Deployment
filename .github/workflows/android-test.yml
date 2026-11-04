@@ -2,7 +2,8 @@ name: Android test APK
 on:
   workflow_dispatch:
   push:
-    branches: [codex/mobile-production]
+    branches: [main]
+    paths: ['mobile/**', '.github/workflows/android-test.yml']
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,18 +18,21 @@ jobs:
         with:
           node-version: '24'
           cache: npm
+          cache-dependency-path: mobile/package-lock.json
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '25'
       - uses: android-actions/setup-android@v3
-      - run: npm ci --include=dev
-      - run: npm run typecheck
+      - working-directory: mobile
+        run: npm ci --include=dev
+      - working-directory: mobile
+        run: npm run typecheck
       - name: Build installable test APK
-        working-directory: android
+        working-directory: mobile/android
         run: chmod +x gradlew && ./gradlew assembleRelease --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: LocateBase-Android-Test
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: mobile/android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
