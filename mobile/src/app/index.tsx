@@ -1,8 +1,8 @@
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { Alert } from "react-native";
 import { useFavourites } from "../context/FavouritesContext";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import {
   View,
   Text,
@@ -77,9 +77,14 @@ export default function Home() {
     }
   }, []);
 
-  useEffect(() => {
-    void loadGuesthouses();
-  }, [loadGuesthouses]);
+  // Refresh previews every time Explore gains focus. Details fetches fresh data
+  // separately, so keeping the first home-page response forever can leave old
+  // "No image available" placeholders after an admin uploads a photo.
+  useFocusEffect(
+    useCallback(() => {
+      void loadGuesthouses();
+    }, [loadGuesthouses])
+  );
 
   const hotels: GuesthouseCard[] = guesthouses.map((guesthouse) => ({
     id: guesthouse.id,
