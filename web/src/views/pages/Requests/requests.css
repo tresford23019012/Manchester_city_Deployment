@@ -113,7 +113,9 @@ select.w3r-input { min-width: 0; width: 100%; }
 }
 
 /* Crimson + Mint Mist: requests, users and administration */
-.w3r { padding: clamp(20px, 3vw, 44px); max-width: 1600px; margin: 0 auto; }
+.w3r { padding: clamp(20px, 3vw, 44px); max-width: none; margin: 0 0 0 248px; min-width: 0; }
+@media (max-width: 1000px) { .w3r { margin-left: 208px; } }
+@media (max-width: 760px) { .w3r { margin-left: 0; } }
 .w3r h1 { font-size: clamp(1.65rem,2.5vw,2.2rem); font-weight: 800; letter-spacing: -.035em; color: var(--color-text); }
 .w3r-header { align-items: center; margin-bottom: 26px; }
 .w3r-card, .w3r-tablewrap { border-radius: 18px; box-shadow: var(--lb-shadow, 0 6px 24px #0001); }
