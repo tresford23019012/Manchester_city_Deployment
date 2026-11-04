@@ -111,3 +111,28 @@ select.w3r-input { min-width: 0; width: 100%; }
   .w3r-input { min-width: 0; width: 100%; }
   .w3r-dl { grid-template-columns: 1fr; }
 }
+
+/* Crimson + Mint Mist: requests, users and administration */
+.w3r { padding: clamp(20px, 3vw, 44px); max-width: 1600px; margin: 0 auto; }
+.w3r h1 { font-size: clamp(1.65rem,2.5vw,2.2rem); font-weight: 800; letter-spacing: -.035em; color: var(--color-text); }
+.w3r-header { align-items: center; margin-bottom: 26px; }
+.w3r-card, .w3r-tablewrap { border-radius: 18px; box-shadow: var(--lb-shadow, 0 6px 24px #0001); }
+.w3r-card { padding: 24px; }
+.w3r-toolbar { gap: 16px; margin-bottom: 20px; }
+.w3r-filters { gap: 9px; }
+.w3r-chip { padding: 9px 16px; border-radius: 99px; font-weight: 650; transition: .2s ease; }
+.w3r-chip:hover:not([aria-pressed="true"]) { background: var(--lb-mint-mist, #eef8f3); border-color: #9acaba; }
+.w3r-chip[aria-pressed="true"] { background: var(--lb-crimson, #9b1c2b); border-color: var(--lb-crimson, #9b1c2b); box-shadow: 0 4px 12px #9b1c2b25; }
+.w3r-input { border-radius: 11px; padding: 11px 14px; }
+.w3r-table th { background: var(--lb-mint-mist, #eef8f3); color: #49675e; font-weight: 750; text-transform: uppercase; font-size: .76rem; letter-spacing: .05em; }
+.w3r-table td { padding: 16px; }
+.w3r-table tbody tr:hover { background: #f5faf7; }
+.w3r-btn { border-radius: 10px; padding: 9px 16px; font-weight: 650; }
+.w3r-btn--primary { background: var(--lb-crimson, #9b1c2b); border-color: var(--lb-crimson, #9b1c2b); color: #fff; }
+.w3r-btn--primary:hover:not(:disabled) { background: var(--lb-crimson-deep, #7b1423); }
+.w3r-badge { padding: 5px 11px; border-radius: 99px; background: #f3faf6; }
+.w3r-badge--rejected, .w3r-badge--blocked { background: #fff1f3; }
+.w3r-badge--pending, .w3r-badge--overdue { background: #fff7e8; }
+.w3r-state { background: white; border-color: #bbdacd; border-radius: 18px; padding: 55px 24px; }
+.w3r-step__marker { width: 30px; height: 30px; }
+@media(max-width:900px) { .w3r { padding: 18px; } .w3r-header { flex-wrap: wrap; } }
