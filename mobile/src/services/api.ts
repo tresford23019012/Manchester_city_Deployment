@@ -1,6 +1,6 @@
 import { auth } from '../../config/firebase';
 
-const origin = (process.env.EXPO_PUBLIC_API_URL || 'https://locatebase-api.onrender.com').replace(/\/$/, '');
+const origin = (process.env.EXPO_PUBLIC_API_URL || 'https://manchester-city-backend.onrender.com').replace(/\/$/, '');
 export const API_BASE = origin.endsWith('/api/v1') ? origin : `${origin}/api/v1`;
 
 export async function request<T>(path: string, options: RequestInit = {}, authenticated = false): Promise<T> {
