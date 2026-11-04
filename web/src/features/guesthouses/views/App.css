@@ -558,3 +558,48 @@
 .app .add-guesthouse-button { top: 2px; }
 @media(max-width:1000px) { .app.has-sidebar { padding-left: 185px; } .app .sidebar { width:185px; } }
 @media(max-width:650px) { .app.has-sidebar { padding-left: 0; } .app .sidebar { position: static; width:100%; } }
+
+
+/* Shared admin rail owns navigation on every route.
+   Retain guesthouse controls in the component, but do not render its
+   duplicate sidebar over the shared primary navigation. */
+.app.has-sidebar {
+  padding-left: 248px;
+  min-height: calc(100vh - 74px);
+  background: transparent;
+}
+.app.has-sidebar > .sidebar { display: none; }
+.app .main-content {
+  max-width: none;
+  margin: 0 auto;
+  padding: clamp(26px, 3.5vw, 52px) clamp(22px, 3.8vw, 58px);
+}
+.app .page-heading { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #dceae2; }
+.app .page-heading h1 { color: #273039; font-size: clamp(1.9rem, 2.6vw, 2.6rem); font-weight: 800; }
+.app .subtitle { font-size: .95rem; color: #647970; }
+.app .list-panel { overflow: hidden; border-radius: 20px; }
+.app .panel-heading { padding: 26px 30px 14px; }
+.app .filter-bar { padding: 4px 30px 22px; }
+.app .table-container { overflow-x: auto; }
+.app table { white-space: nowrap; }
+.app th { padding: 18px 21px; background: #dcefe7; color: #29584c; }
+.app td { padding: 19px 21px; font-size: .86rem; }
+.app tbody tr:hover { background: #f3faf6; }
+.app .guesthouse-name { color: #26322d; font-size: .91rem; }
+.app .property-cell img, .app .property-placeholder { height: 48px; width: 52px; border-radius: 10px; }
+.app .row-actions .edit-link { font-size: .85rem; }
+.app .status { padding: 6px 12px; font-size: .73rem; }
+.app .add-guesthouse-button { font-size: .85rem; padding: 12px 20px; }
+.app .editor-card { border-radius: 20px; box-shadow: 0 12px 32px rgba(28, 69, 51, .06); }
+.app .editor-card h2 { color: #7b1423; font-size: 1.08rem; }
+.app .photo-upload { border: 2px dashed #badccc; border-radius: 14px; background: #f5faf7; }
+.app .photo-upload:hover { background: #e9f6ef; }
+@media(max-width:1000px) { .app.has-sidebar { padding-left: 208px; } }
+@media(max-width:760px) {
+  .app.has-sidebar { padding-left: 0; }
+  .app .main-content { padding: 23px 16px 40px; }
+  .app .page-heading { padding-right: 0; }
+  .app .add-guesthouse-button { position: static; margin-top: 14px; }
+  .app .panel-heading { padding: 20px 17px 10px; }
+  .app .filter-bar { padding: 4px 17px 20px; }
+}
