@@ -22,6 +22,7 @@ export default function RegisterScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [accountRole, setAccountRole] = useState<'customer' | 'owner'>('customer');
   const handleRegister = async () => {
   if (
     !email.trim() ||
@@ -55,6 +56,7 @@ export default function RegisterScreen() {
       lastName,
       email,
       password,
+      role: accountRole,
     });
 
 
@@ -110,6 +112,22 @@ export default function RegisterScreen() {
           <Text style={styles.subtitle}>
             Create your account and discover amazing places to stay.
           </Text>
+
+          {/* Account type determines permissions for a newly registered account. */}
+          <Text style={styles.roleLabel}>I'm joining as</Text>
+          <View style={styles.roleRow}>
+            <Pressable accessibilityRole="radio" accessibilityState={{checked: accountRole === 'customer'}}
+              style={[styles.roleButton, accountRole === 'customer' && styles.roleButtonActive]}
+              onPress={() => setAccountRole('customer')}>
+              <Text style={[styles.roleText, accountRole === 'customer' && styles.roleTextActive]}>Guest</Text>
+            </Pressable>
+            <Pressable accessibilityRole="radio" accessibilityState={{checked: accountRole === 'owner'}}
+              style={[styles.roleButton, accountRole === 'owner' && styles.roleButtonActive]}
+              onPress={() => setAccountRole('owner')}>
+              <Text style={[styles.roleText, accountRole === 'owner' && styles.roleTextActive]}>Guesthouse owner</Text>
+            </Pressable>
+          </View>
+          {accountRole === 'owner' && <Text style={styles.roleHelp}>Owners can submit guesthouse listing requests for administrator review.</Text>}
 
           {/* Registration fields */}
           <TextInput
@@ -219,6 +237,13 @@ export default function RegisterScreen() {
 
 
 const styles = StyleSheet.create({
+  roleLabel: { fontSize: 12, fontWeight: '700', color: '#33483F', marginBottom: 9 },
+  roleRow: { flexDirection: 'row', gap: 10, marginBottom: 10 },
+  roleButton: { flex: 1, borderWidth: 1, borderColor: '#CDEBDD', borderRadius: 12, paddingVertical: 13, alignItems: 'center', backgroundColor: '#fff' },
+  roleButtonActive: { backgroundColor: '#9B1C2B', borderColor: '#9B1C2B' },
+  roleText: { fontSize: 12, color: '#33483F', fontWeight: '700' },
+  roleTextActive: { color: '#fff' },
+  roleHelp: { fontSize: 11, color: '#64736E', marginBottom: 15 },
   safeArea: {
     flex: 1,
     backgroundColor: "#F7FAF8",
