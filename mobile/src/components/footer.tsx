@@ -123,6 +123,10 @@ export default function Footer() {
 
           </Pressable>
 
+          <Pressable style={styles.menuButtons} onPress={() => router.push("/owner-requests")}>
+            <Ionicons name="business-outline" size={26} color="#9B1C2B" />
+            <Text style={styles.menuText}>List property</Text>
+          </Pressable>
           {/*Recently Viewed*/}
           <Pressable style={styles.menuButtons} onPress={() => router.push("/recent")}>
             <Animated.View
