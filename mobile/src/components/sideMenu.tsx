@@ -153,6 +153,23 @@ return (
         </View>
 
         <View style={styles.favouriteButton}>
+          <Pressable
+            accessibilityRole="button"
+            style={[styles.homeRow, pathname === "/owner-requests" && styles.activeMenuItem]}
+            onPress={() => { onClose(); router.push("/owner-requests"); }}>
+            <View style={styles.menuIcon}>
+              <Ionicons name="business-outline" size={31}
+                color={pathname === "/owner-requests" ? "#FFFFFF" : "#9B1C2B"} />
+            </View>
+            <Text style={[styles.homeName, pathname === "/owner-requests" && styles.activeMenuText]}>
+              List your guesthouse
+            </Text>
+            <Ionicons name="chevron-forward" size={23}
+              color={pathname === "/owner-requests" ? "#FFFFFF" : "#242424"} />
+          </Pressable>
+        </View>
+
+        <View style={styles.favouriteButton}>
             <Pressable
                 style={[styles.homeRow,
                        pathname === "/login" && styles.activeMenuItem,]
