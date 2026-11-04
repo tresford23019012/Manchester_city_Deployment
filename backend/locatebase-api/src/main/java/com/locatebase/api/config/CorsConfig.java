@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CorsConfig implements WebMvcConfigurer {
     private final String[] allowedOrigins;
 
-    public CorsConfig(@Value("${app.cors.allowed-origins:https://locatebase-admin.onrender.com,http://localhost:5173,http://127.0.0.1:5173}") String origins) {
+    public CorsConfig(@Value("${app.cors.allowed-origins:https://manchester-city-deployment-2.onrender.com,http://localhost:5173,http://127.0.0.1:5173}") String origins) {
         allowedOrigins = Arrays.stream(origins.split(","))
                 .map(String::trim).filter(origin -> !origin.isEmpty()).toArray(String[]::new);
     }
