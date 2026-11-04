@@ -44,3 +44,209 @@ a { color: var(--lb-crimson); }
   .admin-nav a { padding: 9px 10px; font-size: .9rem; }
 }
 @media (prefers-reduced-motion: reduce) { button, .admin-nav a { transition: none; } }
+
+
+/* ───── LocateBase Studio / Crimson + Mint Mist — layout edition ───── */
+/* One consistent rail for all four sections. No changes to route behavior. */
+:root {
+  --lb-ink: #242e2b;
+  --lb-muted: #637970;
+  --lb-paper: #f7fbf9;
+  --lb-crimson: #9b1c2b;
+  --lb-crimson-deep: #711321;
+  --lb-crimson-mid: #b43b4a;
+  --lb-mint: #d8eee5;
+  --lb-mint-mist: #eef8f3;
+  --lb-mint-deep: #277563;
+  --lb-outline: #e0eae5;
+  --lb-shadow: 0 12px 36px rgba(28, 69, 51, .055);
+  --lb-radius: 18px;
+  --color-primary: var(--lb-crimson);
+  --color-secondary: var(--lb-mint-deep);
+  --color-text: var(--lb-ink);
+  --color-text-muted: var(--lb-muted);
+  --color-border: var(--lb-outline);
+  --color-surface: #ffffff;
+}
+html { background: var(--lb-paper); }
+body {
+  background: radial-gradient(circle at 90% 0%, #e3f3eb 0, transparent 36%),
+              linear-gradient(145deg, #f8fbfa 12%, #f1f8f4 100%);
+  color: var(--lb-ink);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#root { min-width: 320px; }
+.session-bar {
+  margin-left: 248px;
+  padding: 14px clamp(22px, 3vw, 48px);
+  min-height: 74px;
+  background: rgba(255,255,255,.94);
+  color: var(--lb-ink);
+  border-bottom: 1px solid var(--lb-outline);
+  box-shadow: none;
+  backdrop-filter: blur(18px);
+  font-size: .94rem;
+}
+.session-bar::before { content: "ADMINISTRATION  /  WORKSPACE"; color: var(--lb-mint-deep); font-size: .72rem; font-weight: 800; letter-spacing: .11em; margin-right: auto; }
+.session-bar > span:first-child { font-weight: 750; margin-right: auto; }
+.session-bar button { background: var(--lb-crimson-soft); color: var(--lb-crimson-deep); border: 1px solid #f0d3d8; padding: 10px 19px; border-radius: 12px; }
+.session-bar button:hover { background: #f4dce1; }
+.admin-nav {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 9px;
+  padding: 130px 18px 28px;
+  background: linear-gradient(160deg, #741523 0%, #951f30 55%, #ad3b4f 100%);
+  border: none;
+  box-shadow: 12px 0 38px rgba(77, 24, 35, .13);
+}
+.admin-nav::before {
+  content: "◈  LOCATEBASE";
+  position: absolute;
+  top: 36px;
+  left: 23px;
+  color: #fff;
+  font-size: 1.14rem;
+  font-weight: 850;
+  letter-spacing: .095em;
+}
+.admin-nav::after {
+  content: "ADMIN CONSOLE\A CRIMSON × MINT MIST";
+  white-space: pre;
+  margin-top: auto;
+  padding: 22px 10px 0;
+  border-top: 1px solid rgba(255,255,255,.18);
+  color: #f5dce2;
+  line-height: 1.9;
+  font-size: .68rem;
+  font-weight: 750;
+  letter-spacing: .12em;
+}
+.admin-nav a {
+  width: 100%;
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  padding: 13px 16px;
+  border-radius: 12px;
+  color: #f7e9ec;
+  font-size: .94rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+.admin-nav a::before { content: "◌"; font-size: 1.25rem; width: 29px; color: #f1bac4; }
+.admin-nav a:hover { color: #fff; background: rgba(255,255,255,.11); transform: translateX(2px); }
+.admin-nav a.active {
+  background: #f8fcfa;
+  color: var(--lb-crimson-deep);
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(44,0,14,.16);
+}
+.admin-nav a.active::before { color: var(--lb-crimson); content: "●"; font-size: .75rem; }
+.admin-nav a.active:hover { transform: none; }
+.w3-dashboard, .w3r { margin-left: 248px; max-width: none; min-height: calc(100vh - 74px); }
+.w3-dashboard, .w3r { padding: clamp(26px, 3.5vw, 52px) clamp(22px, 3.8vw, 58px); }
+.w3-dashboard .w3-header, .w3r .w3r-header {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--lb-outline);
+  margin-bottom: 28px;
+}
+.w3-dashboard .w3-header h1, .w3r h1 { color: var(--lb-ink); font-size: clamp(1.9rem, 2.6vw, 2.6rem); letter-spacing: -.045em; }
+.w3-dashboard .w3-card__hint, .w3r .w3r-sub { color: var(--lb-muted); }
+.w3-dashboard .w3-stats { gap: 22px; margin-bottom: 24px; }
+.w3-dashboard .w3-card {
+  border: 1px solid var(--lb-outline);
+  border-radius: 20px;
+  padding: 29px;
+  box-shadow: var(--lb-shadow);
+}
+.w3-dashboard .w3-stats .w3-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--lb-outline);
+  border-top: none;
+  background: #fff;
+}
+.w3-dashboard .w3-stats .w3-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: var(--lb-crimson);
+}
+.w3-dashboard .w3-stats .w3-card:nth-child(2)::before { background: #68ad97; }
+.w3-dashboard .w3-stats .w3-card:nth-child(3)::before { background: #ce7887; }
+.w3-dashboard .w3-card__value { font-weight: 850; font-size: clamp(2.1rem, 3vw, 3rem); line-height: 1.15; color: var(--lb-crimson-deep); }
+.w3-dashboard .w3-card__value--text { font-size: clamp(1.45rem, 2vw, 2rem); }
+.w3-dashboard .w3-chartcard { background: #fff; }
+.w3-dashboard .w3-card__label { color: #5a746a; font-weight: 700; }
+.w3-dashboard .w3-btn, .w3r .w3-btn {
+  background: #fff;
+  border-color: #cadfd6;
+  color: var(--lb-crimson-deep);
+  border-radius: 12px;
+  padding: 11px 19px;
+  box-shadow: 0 3px 9px rgba(51,80,65,.04);
+}
+.w3r .w3r-toolbar { align-items: center; padding: 14px 0 20px; }
+.w3r .w3r-filters { row-gap: 10px; }
+.w3r .w3r-chip { background: #fff; border-color: #dae9e1; }
+.w3r .w3r-chip[aria-pressed="true"] { background: var(--lb-crimson); border-color: var(--lb-crimson); color: white; }
+.w3r .w3r-tablewrap { background: #fff; overflow-x: auto; border-radius: 18px; box-shadow: var(--lb-shadow); }
+.w3r .w3r-table th { background: #dcefe7; color: #29584c; border-color: #d3e9de; padding: 17px 21px; }
+.w3r .w3r-table td { padding: 19px 21px; }
+.w3r .w3r-table tbody tr { transition: background-color .15s ease; }
+.w3r .w3r-table tbody tr:hover { background: #f3faf6; }
+.w3r .w3r-table td:first-child { font-weight: 650; }
+.w3r .w3r-table td .w3r-sub { font-weight: 400; font-size: .85rem; padding-top: 3px; }
+.w3r .w3r-card, .w3r .w3r-state { background: white; border-radius: 20px; box-shadow: var(--lb-shadow); }
+.w3r .w3r-state { border: 1px dashed #a6cbbd; padding: 72px 20px; }
+.w3r .w3r-btn--primary { background: var(--lb-crimson); border-color: var(--lb-crimson); color: #fff; }
+.w3r .w3r-btn--danger { color: #a52438; background: #fff4f5; border-color: #f1d0d6; }
+.w3r .w3r-input { background: #fff; border: 1px solid #d5e6dd; min-height: 44px; }
+.w3r .w3r-badge { background: #e7f6ed; color: #28694e; border-color: #a8d8bb; }
+.w3r .w3r-badge--rejected, .w3r .w3r-badge--blocked { background: #fcecf0; color: #a52b45; border-color: #f1bcca; }
+.w3r .w3r-badge--pending { background: #fff6e6; color: #996d22; border-color: #eed7ad; }
+.login-card { margin-top: max(9vh, 50px); padding: 42px; border-radius: 24px; }
+.login-card button[type="submit"] { min-width: 120px; padding: 13px 19px; }
+@media (max-width: 1000px) {
+  .admin-nav { width: 208px; }
+  .session-bar, .w3-dashboard, .w3r { margin-left: 208px; }
+}
+@media (max-width: 760px) {
+  .session-bar { margin-left: 0; min-height: 64px; padding: 11px 16px; }
+  .session-bar::before { display: none; }
+  .admin-nav {
+    position: sticky;
+    top: 0;
+    inset: auto;
+    z-index: 30;
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    align-items: center;
+    gap: 4px;
+    padding: 9px 12px;
+    background: #8d1c2c;
+    box-shadow: 0 5px 15px rgba(63,14,24,.13);
+  }
+  .admin-nav::before, .admin-nav::after, .admin-nav a::before { display: none; }
+  .admin-nav a { min-height: 43px; flex: 0 0 auto; width: auto; padding: 10px 13px; font-size: .87rem; }
+  .admin-nav a.active { background: #fff; }
+  .w3-dashboard, .w3r { margin-left: 0; min-height: auto; padding: 23px 16px 40px; }
+  .w3-dashboard .w3-header, .w3r .w3r-header { flex-wrap: wrap; }
+  .w3-dashboard .w3-card { padding: 23px; }
+  .w3r .w3r-toolbar { align-items: stretch; }
+  .w3r .w3r-input { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-nav a, .w3r .w3r-table tbody tr { transition: none; }
+}
