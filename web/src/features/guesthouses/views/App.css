@@ -1,12 +1,12 @@
 .app {
-  --primary: #949f4d;
-  --primary-dark: #65732f;
-  --primary-tint: #f1f3e9;
-  --background: #f7f7f5;
+  --primary: #9b1c2b;
+  --primary-dark: #7b1423;
+  --primary-tint: #f9eaed;
+  --background: #f3f9f6;
   --surface: #ffffff;
-  --text: #253523;
-  --text-secondary: #75816c;
-  --border: #e9ece6;
+  --text: #273039;
+  --text-secondary: #687a72;
+  --border: #deebe6;
   --success: #3e8e41;
   --warning: #a77b18;
   --danger: #c0392b;
@@ -19,9 +19,9 @@
 }
 
 .app.dark {
-  --primary: #78909c;
-  --primary-dark: #a9c2cc;
-  --primary-tint: #303a40;
+  --primary: #c66b80;
+  --primary-dark: #f0aaba;
+  --primary-tint: #39242d;
   --background: #17191b;
   --surface: #232629;
   --text: #eff2f3;
@@ -90,7 +90,7 @@
   flex-direction: column;
   width: 220px;
   padding: 26px 20px;
-  background: #949f4d;
+  background: #7b1423;
   color: #ffffff;
 }
 
@@ -528,3 +528,33 @@
     grid-template-columns: 1fr;
   }
 }
+/* Crimson + Mint Mist: guesthouse portfolio */
+.app { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app.has-sidebar { padding-left: 232px; }
+.app .sidebar { width: 232px; background: linear-gradient(180deg, #7b1423, #9b1c2b 65%, #7a2939); box-shadow: 6px 0 24px rgba(68,29,40,.11); }
+.app.dark .sidebar { background: linear-gradient(180deg, #290e19, #4b1a2b); }
+.app .sidebar nav button { border-radius: 11px; font-weight: 650; font-size: 13px; }
+.app .sidebar nav button:hover { background: rgba(255,255,255,.12); }
+.app .sidebar nav button.active { background: rgba(255,255,255,.2); }
+.app .main-content { padding: clamp(22px, 3vw, 44px); }
+.app h1 { font-size: clamp(1.65rem,2.5vw,2.2rem); font-weight: 800; letter-spacing: -.035em; }
+.app .list-panel, .app .editor-card { border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 10px 32px rgba(30,65,54,.07); }
+.app .panel-heading { padding: 24px 24px 14px; }
+.app .panel-heading h2 { font-size: 16px; font-weight: 750; }
+.app .filter-bar { padding: 4px 24px 20px; }
+.app .filter-bar input, .app .filter-bar select, .app .advanced-filters summary { min-height: 42px; border-radius: 10px; }
+.app th { background: #d8eee5; color: #21594e; font-size: 11px; letter-spacing: .06em; }
+.app td { padding: 17px 16px; }
+.app tbody tr:hover { background: #f3faf6; }
+.app .olive-button { background: #9b1c2b; border-color: #9b1c2b; color: white; border-radius: 10px; }
+.app .olive-button:hover:not(:disabled) { background: #7b1423; border-color: #7b1423; }
+.app .status.published { background: #dbf3e8; color: #216b52; }
+.app .status.draft { background: #fff4e0; color: #8d6516; }
+.app .status.suspended { background: #fde9ed; color: #a52a42; }
+.app .property-placeholder { background: #eef8f3; color: #267867; }
+.app .property-cell small { color: var(--text-secondary); }
+.app .row-actions .edit-link { color: var(--primary); font-weight: 700; }
+.app .row-actions select { border-radius: 9px; }
+.app .add-guesthouse-button { top: 2px; }
+@media(max-width:1000px) { .app.has-sidebar { padding-left: 185px; } .app .sidebar { width:185px; } }
+@media(max-width:650px) { .app.has-sidebar { padding-left: 0; } .app .sidebar { position: static; width:100%; } }
