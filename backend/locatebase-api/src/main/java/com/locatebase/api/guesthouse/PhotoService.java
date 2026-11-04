@@ -186,8 +186,12 @@ public class PhotoService {
     private synchronized Cloudinary cloudinary() {
         if (cloudinary == null) {
             String url = System.getenv("CLOUDINARY_URL");
+            // Existing Render environments use CLOUDINARY_URI; support both names.
             if (url == null || url.isBlank()) {
-                throw new IllegalStateException("CLOUDINARY_URL is not set");
+                url = System.getenv("CLOUDINARY_URI");
+            }
+            if (url == null || url.isBlank()) {
+                throw new IllegalStateException("Cloudinary credentials are missing: set CLOUDINARY_URL or CLOUDINARY_URI");
             }
             cloudinary = new Cloudinary(url);
         }
